@@ -1,8 +1,9 @@
 import {createApp, App as AppInstance} from 'vue';
-import {createRouter, createWebHashHistory, RouterHistory, Router} from 'vue-router';
+import {createRouter, createWebHashHistory, Router} from 'vue-router';
 // import ElementPlus from 'element-plus';
 import routes from './router';
 import store from './common/store';
+import ElementPlus from 'element-plus';
 
 import App from './App.vue';
 
@@ -24,11 +25,12 @@ function handleMicroData(router: Router) {
     if (window.eventCenterForAppNameVite) {
         // 主动获取基座下发的数据
         console.log('child-vite getData:', window.eventCenterForAppNameVite.getData());
-
+        store.commit('setBaseData', window.eventCenterForAppNameVite.getData());
         // 监听基座下发的数据变化
         window.eventCenterForAppNameVite.addDataListener((data: Record<string, unknown>) => {
             console.log('child-vite addDataListener:', data);
-
+            store.commit('setBaseData', data);
+            console.log(store, '999999999');
             if (data.path && typeof data.path === 'string') {
                 data.path = data.path.replace(/^#/, '');
                 // 当基座下发path时进行跳转
@@ -82,7 +84,9 @@ const router = createRouter({
 });
 
 const app = createApp(App);
+app.use(store);
 app.use(router);
+app.use(ElementPlus);
 app.mount('#app-one');
 
 console.log('微应用app-one渲染了');

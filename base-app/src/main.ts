@@ -12,6 +12,10 @@ import './common/styles/index.scss'; // global css
 import microApp from '@micro-zoe/micro-app';
 
 microApp.start({
+    globalAssets: {
+        js: [], // js地址
+        css: ['element-plus/dist/index.css', './common/styles/index.scss'], // css地址
+    },
     lifeCycles: {
         created() {
             console.log('created 全局监听');
