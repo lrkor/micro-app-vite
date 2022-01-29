@@ -20,7 +20,7 @@
 // 沙箱关闭后，子应用默认的通信功能失效，此时可以通过手动注册通信对象实现一致的功能。注册方式：在基座应用中为子应用初始化通信对象
 import {EventCenterForMicroApp} from '@micro-zoe/micro-app';
 
-// 注意：每个vite子应用根据appName单独分配一个通信对象
+// @ts-ignore 因为vite子应用关闭了沙箱，我们需要为子应用appOne创建EventCenterForMicroApp对象来实现数据通信
 window.eventCenterForAppNameVite = new EventCenterForMicroApp('appOne');
 
 export default {
