@@ -1,6 +1,5 @@
 <template>
     <div class="app-one">
-        app-one
         <micro-app
             name="appOne"
             url="http://localhost:3000/app/one/"
@@ -22,7 +21,7 @@
 import {EventCenterForMicroApp} from '@micro-zoe/micro-app';
 
 // 注意：每个vite子应用根据appName单独分配一个通信对象
-window.eventCenterForAppOne = new EventCenterForMicroApp('appOne');
+window.eventCenterForAppNameVite = new EventCenterForMicroApp('appOne');
 
 export default {
     name: 'AppOne',
