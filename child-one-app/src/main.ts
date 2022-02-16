@@ -5,6 +5,9 @@ import routes from './router';
 import store from './common/store';
 import ElementPlus from 'element-plus';
 
+import 'element-plus/dist/index.css';
+import './common/styles/index.scss'; // global css
+
 import App from './App.vue';
 
 // import 'element-plus/dist/index.css';

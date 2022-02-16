@@ -19,6 +19,15 @@ const routes = [
         },
         component: () => import('@/views/test/test.page.vue'),
     },
+    {
+        path: '/directives',
+        name: 'Directives',
+        meta: {
+            icon: 'el-icon-s-home',
+            title: '指令',
+        },
+        component: () => import('@/views/directives/directives.page.vue'),
+    },
 ];
 
 // const router = createRouter({
