@@ -1,5 +1,6 @@
 <template>
     <div class="app-one">
+        <el-button @click="setData">下发新数据</el-button>
         <micro-app
             name="appOne"
             url="http://localhost:3000/app/one/"
@@ -54,6 +55,10 @@ export default {
 
         handleError(): void {
             console.log('child-vite 加载出错了');
+        },
+
+        setData(): void {
+            this.microAppData = {msg: '更新'};
         },
 
         handleDataChange(e: CustomEvent): void {

@@ -5,13 +5,7 @@ import routes from './router';
 import store from './common/store';
 import ElementPlus from 'element-plus';
 
-import 'element-plus/dist/index.css';
-import './common/styles/index.scss'; // global css
-
 import App from './App.vue';
-
-// import 'element-plus/dist/index.css';
-// import './common/styles/index.scss'; // global css
 
 declare global {
     interface Window {
@@ -31,6 +25,7 @@ function handleMicroData(router: Router) {
         store.commit('setBaseData', window.eventCenterForAppNameVite.getData());
         // 监听基座下发的数据变化
         window.eventCenterForAppNameVite.addDataListener((data: Record<string, unknown>) => {
+            console.log('监听数据更新');
             console.log('child-vite addDataListener:', data);
             store.commit('setBaseData', data);
             console.log(store, '999999999');

@@ -2,7 +2,7 @@
     <div id="app-one1">
         <div id="public-links" @click="onRouteChange">
             <el-menu router :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                <el-menu-item index="/home">Home</el-menu-item>
+                <el-menu-item index="/">Home</el-menu-item>
                 <el-menu-item index="/test">Page2</el-menu-item>
                 <el-menu-item index="/directives">指令</el-menu-item>
             </el-menu>
@@ -21,7 +21,7 @@ const onRouteChange = () => {
     }
 };
 
-const activeIndex = ref('1');
+const activeIndex = ref('/');
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
 };

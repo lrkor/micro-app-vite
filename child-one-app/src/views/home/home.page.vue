@@ -2,7 +2,7 @@
     <div class="home">
         home
         <p>{{ store.state.baseData.msg }}</p>
-        <el-button>Default</el-button>
+        <el-button @click="sendData">发送数据</el-button>
         <el-button type="primary">Primary</el-button>
     </div>
 </template>
@@ -19,9 +19,14 @@ export default defineComponent({
             return id;
         };
         const store = useStore();
+
+        const sendData = () => {
+            window.eventCenterForAppNameVite.dispatch({sendData: 'sendData'});
+        };
         return {
             test,
             store,
+            sendData,
         };
     },
 });
