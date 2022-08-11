@@ -13,6 +13,7 @@ const store = createStore({
         ],
         cachedViews: ['Home'],
         currentIndex: '/home',
+        token: '1231',
     },
     mutations: {
         addTab(state: any, data: TabsModel) {

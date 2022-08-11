@@ -28,7 +28,7 @@ export default {
     name: 'AppOne',
     data() {
         return {
-            microAppData: {msg: '来自基座的数据'},
+            microAppData: {msg: '来自基座的数据', token: ''},
         };
     },
     methods: {
@@ -45,7 +45,7 @@ export default {
 
             setTimeout(() => {
                 // @ts-ignore
-                this.microAppData = {msg: '来自基座的新数据'};
+                this.microAppData = {msg: '来自基座的新数据', token: sessionStorage.getItem('token')};
             }, 2000);
         },
 

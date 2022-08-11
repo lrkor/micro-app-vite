@@ -2,6 +2,7 @@
     <div class="home">
         home
         <p>{{ store.state.baseData.msg }}</p>
+        <p>登录token：{{ store.state.baseData.token }}</p>
         <el-button @click="sendData">发送数据</el-button>
         <el-button type="primary">Primary</el-button>
     </div>

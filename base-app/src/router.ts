@@ -2,13 +2,23 @@ import {createRouter, RouteRecordRaw, createWebHistory} from 'vue-router';
 import LoginPage from '@/login.page.vue';
 import layout from '@/layout/index.vue';
 import store from './common/store';
-import {t} from 'element-plus/lib/locale';
+
+const guard = async (to: any, from: any, next: any) => {
+    // 判断登录
+    const token = store.state.token;
+    if (!token) {
+        next('/login');
+        return false;
+    }
+    next();
+};
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: layout,
-        redirect: '/test',
+        redirect: '/home',
+        beforeEnter: guard,
         meta: {
             icon: 'el-icon-s-home',
         },
