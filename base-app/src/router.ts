@@ -7,7 +7,7 @@ const guard = async (to: any, from: any, next: any) => {
     // 判断登录
     const token = store.state.token;
     if (!token) {
-        next('/login');
+        next('/');
         return false;
     }
     next();
@@ -15,9 +15,8 @@ const guard = async (to: any, from: any, next: any) => {
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/',
+        path: '/home',
         component: layout,
-        redirect: '/home',
         beforeEnter: guard,
         meta: {
             icon: 'el-icon-s-home',
@@ -54,7 +53,12 @@ const routes: Array<RouteRecordRaw> = [
         ],
     },
     {
-        path: '/login',
+        path: '/',
+        meta: {
+            icon: 'el-icon-s-home',
+            title: '登录',
+            hiddenTab: true,
+        },
         component: LoginPage,
     },
 ];

@@ -12,7 +12,7 @@
                                 <el-input v-model="form.userName" placeholder="Username" class="txtName" />
                             </el-form-item>
                             <el-form-item prop="password">
-                                <el-input v-model="form.password" placeholder="Password" />
+                                <el-input v-model="form.password" type="password" placeholder="Password" />
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" size="small" round @click="onSubmit">Login</el-button>
@@ -81,6 +81,7 @@ import bgImg4 from './assets/img/timg4.jpg';
 import bgImg5 from './assets/img/timg5.jpg';
 import {useRouter} from 'vue-router';
 import {guid} from '@/common/tools';
+import {ElMessage} from 'element-plus';
 
 export default defineComponent({
     name: 'LoginPage',
@@ -150,8 +151,19 @@ export default defineComponent({
             }
             formRef.value.validate((valid: any) => {
                 if (valid) {
-                    sessionStorage.setItem('token', guid());
-                    router.push('/');
+                    if (form.value.userName === 'admin' && form.value.password === '123456') {
+                        ElMessage({
+                            message: '登录成功',
+                            type: 'success',
+                        });
+                        sessionStorage.setItem('token', guid());
+                        router.push('/home');
+                    } else {
+                        ElMessage({
+                            message: '账号密码不正确',
+                            type: 'warning',
+                        });
+                    }
                 }
             });
         };
