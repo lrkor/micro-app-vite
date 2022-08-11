@@ -1,6 +1,7 @@
 <template>
     <div class="app-one">
         <el-button @click="setData">下发新数据</el-button>
+        <el-button @click="getData">获取微应用sessionStorage</el-button>
         <micro-app
             name="appOne"
             url="http://localhost:3000/app/one/"
@@ -28,7 +29,7 @@ export default {
     name: 'AppOne',
     data() {
         return {
-            microAppData: {msg: '来自基座的数据', token: ''},
+            microAppData: {msg: '来自基座的数据'},
         };
     },
     methods: {
@@ -45,7 +46,7 @@ export default {
 
             setTimeout(() => {
                 // @ts-ignore
-                this.microAppData = {msg: '来自基座的新数据', token: sessionStorage.getItem('token')};
+                this.microAppData = {msg: '来自基座的新数据'};
             }, 2000);
         },
 
@@ -59,6 +60,10 @@ export default {
 
         setData(): void {
             this.microAppData = {msg: '更新'};
+        },
+
+        getData() {
+            console.log(sessionStorage.getItem('xxx'));
         },
 
         handleDataChange(e: CustomEvent): void {

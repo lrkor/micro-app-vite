@@ -2,7 +2,7 @@
     <div class="home">
         home
         <p>{{ store.state.baseData.msg }}</p>
-        <p>登录token：{{ store.state.baseData.token }}</p>
+        <p>登录token：{{ token }}</p>
         <el-button @click="sendData">发送数据</el-button>
         <el-button type="primary">Primary</el-button>
     </div>
@@ -22,12 +22,17 @@ export default defineComponent({
         const store = useStore();
 
         const sendData = () => {
+            sessionStorage.setItem('xxx', 'xxxxxx');
             window.eventCenterForAppNameVite.dispatch({sendData: 'sendData'});
         };
+
+        const token = sessionStorage.getItem('token');
+
         return {
             test,
             store,
             sendData,
+            token,
         };
     },
 });
