@@ -8,10 +8,10 @@ import {writeFileSync} from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/app/one/',
+    base: '/map/',
     server: {
         host: 'localhost',
-        port: 3000,
+        port: 3001,
         open: false,
     },
     plugins: [

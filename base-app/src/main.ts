@@ -49,6 +49,19 @@ microApp.start({
                     },
                 },
             ],
+            'map': [
+                {
+                    loader(code) {
+                        if (process.env.NODE_ENV === 'development') {
+                            // 这里 basename 需要和子应用vite.config.js中base的配置保持一致
+                            code = code.replace(/(from|import)(\s*['"])(\/map\/)/g, all => {
+                                return all.replace('/map/', 'http://localhost:3001/map/');
+                            });
+                        }
+                        return code;
+                    },
+                },
+            ],
         },
     },
 });

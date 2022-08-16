@@ -5,7 +5,7 @@ import store from './common/store';
 
 const guard = async (to: any, from: any, next: any) => {
     // 判断登录
-    const token = store.state.token;
+    const token = sessionStorage.getItem('token');
     if (!token) {
         next('/');
         return false;
@@ -50,6 +50,15 @@ const routes: Array<RouteRecordRaw> = [
                 },
                 component: () => import('@/views/app-one/app-one.page.vue'),
             },
+            {
+                path: '/map:page*',
+                name: 'map',
+                meta: {
+                    icon: 'el-icon-s-map',
+                    title: '图表应用',
+                },
+                component: () => import('@/views/map/map.page.vue'),
+            },
         ],
     },
     {
@@ -74,6 +83,10 @@ router.beforeEach((to, from, next) => {
     // 判断为子应用路由修改path
     if (to.path === '/app-one') {
         to.path = '/app-one#/';
+    }
+
+    if (to.path === '/map') {
+        to.path = '/map#/';
     }
 
     // 判断当前路由中是否已经入栈

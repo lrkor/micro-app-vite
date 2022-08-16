@@ -10,16 +10,21 @@
             text-color="#fff"
         >
             <el-menu-item index="/home">
-                <i class="el-icon-s-home"></i>
-                <template #title>首页</template>
+                <el-icon :size="20"><HomeFilled /></el-icon>
+                <span>首页</span>
             </el-menu-item>
             <el-menu-item index="/test">
-                <i class="el-icon-data-analysis"></i>
-                <template #title>测试</template>
+                <el-icon :size="20"><Pointer /></el-icon>
+                <span>测试</span>
             </el-menu-item>
             <el-menu-item index="/app-one#/">
-                <i class="el-icon-data-analysis"></i>
-                <template #title>app-one</template>
+                <el-icon :size="20"><Compass /></el-icon>
+                <span>app-one</span>
+            </el-menu-item>
+
+            <el-menu-item index="/map#/">
+                <el-icon :size="20"><MapLocation /></el-icon>
+                <span>图表</span>
             </el-menu-item>
         </el-menu>
     </div>
@@ -28,10 +33,11 @@
 <script lang="ts">
 import {defineComponent, computed} from 'vue';
 import store from '@/common/store';
+import {HomeFilled, Pointer, Compass, MapLocation} from '@element-plus/icons-vue';
 
 export default defineComponent({
     name: 'MenuComp',
-
+    components: {HomeFilled, Pointer, Compass, MapLocation},
     setup() {
         const currentIndex = computed(() => store.getters.getCurrentIndex);
 
@@ -49,6 +55,18 @@ export default defineComponent({
 
 .el-menu-vertical {
     height: 100%;
+}
+
+.el-menu-item {
+    display: flex;
+    align-items: center;
+    line-height: normal;
+
+    .el-icon {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .el-menu-item.is-active {
